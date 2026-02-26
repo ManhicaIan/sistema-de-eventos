@@ -5,24 +5,28 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.time.Instant;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_categoria")
-public class Categoria {
+@Table(name = "tb_bloco")
+public class Bloco {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String descricao;
+    private Instant inicio;
 
-    public Categoria() {
+    private Instant fim;
+
+    public Bloco() {
     }
 
-    public Categoria(Long id, String descricao) {
+    public Bloco(Long id, Instant inicio, Instant fim) {
         this.id = id;
-        this.descricao = descricao;
+        this.inicio = inicio;
+        this.fim = fim;
     }
 
     public Long getId() {
@@ -33,19 +37,27 @@ public class Categoria {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public Instant getInicio() {
+        return inicio;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setInicio(Instant inicio) {
+        this.inicio = inicio;
+    }
+
+    public Instant getFim() {
+        return fim;
+    }
+
+    public void setFim(Instant fim) {
+        this.fim = fim;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Categoria categoria = (Categoria) o;
-        return Objects.equals(id, categoria.id);
+        Bloco bloco = (Bloco) o;
+        return Objects.equals(id, bloco.id);
     }
 
     @Override
