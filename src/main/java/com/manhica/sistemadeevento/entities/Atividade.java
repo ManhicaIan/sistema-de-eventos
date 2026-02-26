@@ -21,6 +21,10 @@ public class Atividade {
 
     private double preco;
 
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
     @ManyToMany(mappedBy = "atividades")
     private Set<Participante> participantes = new HashSet<>();
 
